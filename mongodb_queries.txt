@@ -1,0 +1,121 @@
+test> show dbs
+admin   40.00 KiB
+config  60.00 KiB
+local   72.00 KiB
+test> use b51wd_db
+switched to db b51wd_db
+b51wd_db> db
+b51wd_db
+b51wd_db>
+
+b51wd_db> show collections
+
+b51wd_db>
+
+how to  collect collections:
+db.movies.insertMany([
+
+])
+db.movies.find({})
+
+db.orders.insertMany([
+    //orders table/collection
+[
+ {_id:0,"productName": "steel beam": "status": "new", "quantity": 10 },
+ {_id:1,"productName": "steel beam": "status": "urgent", "quantity": 20 },  
+ {_id:2,"productName": "steel beam": "status": "urgent", "quantity": 30 },
+ {_id:3,"productName": "Iron rod": "status": "new", "quantity": 15 },
+ {_id:4,"productName": "Iron rod": "status": "urgent", "quantity": 50 },
+ {_id:5,"productName": "Iron rod": "status": "urgent", "quantity": 10 },
+])
+
+
+//urgent>addition of quantity
+{_id:1,"productName": "steel beam": "status": "urgent", "quantity": 20 },  
+ {_id:2,"productName": "steel beam": "status": "urgent", "quantity": 30 },
+ {_id:4,"productName": "Iron rod": "status": "urgent", "quantity": 50 },
+ {_id:5,"productName": "Iron rod": "status": "urgent", "quantity": 10 },
+
+ db.user insertMany
+ ([
+{"name": "john","age": 28 },
+{"name": "Alice","age": 34 },
+{"name": "Bob","age": 42 },
+{"name": "Eve","age": 25 },
+{"name": "john","age": 231 },
+])
+
+$match
+filter out the data
+age> greater than 25
+
+db.user.aggregate([
+    {$match:{age:"25"}}
+])
+
+db.user.aggregate([
+    {$match:{age:{$gt:"25"}}}
+])
+
+$project:
+name :1,age:1,_id:0
+
+db.user.aggregate([
+    {$project:{name:1,age:1,_id:0}}
+])
+
+$sort:
+1,-1
+//1=>asc,-1=>dec
+db.user.aggregate([
+    {$sort:{age:1}}
+])
+
+$limit:
+limit the number of documents
+db.user.aggregate([
+{$limit:2}
+])
+
+--------------
+collection you created
+drop>
+db.collection.drop()
+
+db.user insertMany
+ ([
+{"name": "john","age": 28 },
+{"name": "Alice","age": 34 },
+{"name": "Bob","age": 42 },
+{"name": "Eve","age": 25 },
+{"name": "john","age": 231 },
+])
+db.test.drop()
+
+db.orders.insertMany([
+    //orders table/collection
+
+ {_id:0,"productName": "steel beam": "status": "new", "quantity": 10 },
+ {_id:1,"productName": "steel beam": "status": "urgent", "quantity": 20 },  
+ {_id:2,"productName": "steel beam": "status": "urgent", "quantity": 30 },
+ {_id:3,"productName": "Iron rod": "status": "new", "quantity": 15 },
+ {_id:4,"productName": "Iron rod": "status": "urgent", "quantity": 50 },
+ {_id:5,"productName": "Iron rod": "status": "urgent", "quantity": 10 },
+])
+
+$group:db.products.aggregate([
+    {
+        $group:{
+            _id:"$product"
+        }
+    }
+])db.orders.insertMany([
+    //orders table/collection
+[
+ {_id:0,"productName": "steel beam": "status": "new", "quantity": 10 },
+ {_id:1,"productName": "steel beam": "status": "urgent", "quantity": 20 },  
+ {_id:2,"productName": "steel beam": "status": "urgent", "quantity": 30 },
+ {_id:3,"productName": "Iron rod": "status": "new", "quantity": 15 },
+ {_id:4,"productName": "Iron rod": "status": "urgent", "quantity": 50 },
+ {_id:5,"productName": "Iron rod": "status": "urgent", "quantity": 10 },
+])
